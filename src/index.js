@@ -1,80 +1,79 @@
 class FullPageScroll {
-	constructor(options = {}) {
-		this.sections = document.querySelectorAll(".section");
-		this.currentIndex = 0;
-		this.isScrolling = false;
-		this.options = {
-			animationDuration: options.animationDuration || 800,
-			easing: options.easing || "ease-in-out",
-		};
-		this.init();
+	constructor({ container, animationDuration = 1000, easing = "ease-in-out", direction = "vertical" }) {
+	  this.container = document.querySelector(container);
+	  if (!this.container) {
+		console.error("Container element not found");
+		return;
+	  }
+	  this.sections = [...this.container.children];
+	  this.currentIndex = 0;
+	  this.animationDuration = animationDuration;
+	  this.easing = easing;
+	  this.direction = direction;
+	  this.isScrolling = false;
+  
+	  this.setup();
+	  this.addEventListeners();
 	}
-
-	init() {
-		this.setStyles();
-		this.handleScroll();
-	}
-
-	setStyles() {
-		document.body.style.overflow = "hidden";
-		document.documentElement.style.scrollBehavior = "smooth";
-		this.sections.forEach((section) => {
-			section.style.height = "100vh";
-			section.style.transition = `transform ${this.options.animationDuration}ms ${this.options.easing}`;
-			section.style.position = "relative";
+  
+	setup() {
+	  Object.assign(this.container.style, {
+		overflow: "hidden",
+		display: "flex",
+		transition: `transform ${this.animationDuration}ms ${this.easing}`,
+		flexDirection: this.direction === "horizontal" ? "row" : "column",
+		width: this.direction === "horizontal" ? "100vw" : "100%",
+		height: this.direction === "vertical" ? "100vh" : "100%"
+	  });
+  
+	  this.sections.forEach(section => {
+		Object.assign(section.style, {
+		  flex: "0 0 100%",
+		  width: this.direction === "horizontal" ? "100vw" : "100%",
+		  height: this.direction === "vertical" ? "100vh" : "100%"
 		});
+	  });
 	}
-
-	handleScroll() {
-		window.addEventListener("wheel", (event) => {
-			if (this.isScrolling) return;
-			this.isScrolling = true;
-
-			if (event.deltaY > 0) {
-				this.scrollNext();
-			} else {
-				this.scrollPrev();
-			}
-
-			setTimeout(
-				() => (this.isScrolling = false),
-				this.options.animationDuration
-			);
-		});
+  
+	addEventListeners() {
+	  window.addEventListener("wheel", ({ deltaY }) => {
+		if (this.isScrolling) return;
+		this.isScrolling = true;
+  
+		deltaY > 0 ? this.scrollNext() : this.scrollPrev();
+  
+		setTimeout(() => (this.isScrolling = false), this.animationDuration);
+	  });
 	}
-
+  
 	scrollTo(index) {
-		if (index < 0 || index >= this.sections.length) return;
+	  if (index >= 0 && index < this.sections.length) {
 		this.currentIndex = index;
-		this.updateScroll();
+		this.updateScrollPosition();
+	  }
 	}
-
+  
 	scrollNext() {
-		if (this.currentIndex < this.sections.length - 1) {
-			this.currentIndex++;
-			this.updateScroll();
-		}
+	  if (this.currentIndex < this.sections.length - 1) {
+		this.currentIndex++;
+		this.updateScrollPosition();
+	  }
 	}
-
+  
 	scrollPrev() {
-		if (this.currentIndex > 0) {
-			this.currentIndex--;
-			this.updateScroll();
-		}
+	  if (this.currentIndex > 0) {
+		this.currentIndex--;
+		this.updateScrollPosition();
+	  }
 	}
-
-	updateScroll() {
-		window.scrollTo({
-			top: this.sections[this.currentIndex].offsetTop,
-			behavior: "smooth",
-		});
+  
+	updateScrollPosition() {
+	  this.container.style.transform = this.direction === "horizontal"
+		? `translateX(-${this.currentIndex * 100}vw)`
+		: `translateY(-${this.currentIndex * 100}vh)`;
 	}
-}
-
-// Export as ES module
-export default FullPageScroll;
-
-// Export a function for initialization
-export function installFullPageScroll(options) {
-	return new FullPageScroll(options);
-}
+  }
+  
+  export const installFullPageScroll = (options) => new FullPageScroll(options);
+  
+  export default FullPageScroll;  

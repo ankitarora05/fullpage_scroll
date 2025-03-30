@@ -1,14 +1,18 @@
 {
 	"name": "jsfullpage_scroll",
 	"version": "1.0.3",
-	"description": "A simple full-page scrolling plugin for JavaScript",
+	"description": "A simple full-page scrolling plugin in vanilla JavaScript that supports both **vertical** and **horizontal** scrolling.",
 	"main": "src/index.js",
 	"module": "src/index.js",
 	"keywords": [
+		"jsfullpage",
+		"jsfullpage_scroll",
 		"fullpage",
 		"scroll",
 		"javascript",
-		"plugin"
+		"plugin",
+		"vertical scroll",
+		"horizontal scroll"
 	],
 	"repository": {
 		"type": "git",

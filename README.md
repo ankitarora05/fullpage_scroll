@@ -1,48 +1,60 @@
-# Full Page Scroll 🚀
+# JavaScript Full Page Scroll 🚀
 
-A simple full-page scrolling plugin in vanilla JavaScript.
+A simple full-page scrolling plugin in vanilla JavaScript that supports both **vertical** and **horizontal** scrolling.
 
 ## Installation
 
-### With NPM
+### NPM
 
 ```sh
 npm install jsfullpage_scroll
 ```
 
-### Usage
-
-```javascript
-import FullPageScroll, { installFullPageScroll } from "jsfullpage_scroll";
-
-const fullPage = installFullPageScroll({ animationDuration: 1000, easing: "ease-in-out" });
-```
-
-### With CDN
+### CDN
 
 You can use this package via a CDN:
 
 ```html
 <!-- Include the script -->
 <script src="https://cdn.jsdelivr.net/npm/jsfullpage_scroll@latest"></script>
-```
 
-### Usage 
-
-```javascript
+<!-- Initialize -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const fullPage = installFullPageScroll({ animationDuration: 1000, easing: "ease-in-out" });
+    const fullPage = installFullPageScroll({ 
+      container: "#fullpage-container", 
+      animationDuration: 1000, 
+      easing: "ease-in-out", 
+      direction: "vertical" // or "horizontal"
+    });
+
+    // Example usage
+    document.getElementById("next").addEventListener("click", () => fullPage.scrollNext());
   });
 </script>
+```
+
+## Usage
+
+```javascript
+import FullPageScroll, { installFullPageScroll } from "jsfullpage_scroll";
+
+const fullPage = installFullPageScroll({ 
+  container: "#fullpage-container",
+  animationDuration: 1000, 
+  easing: "ease-in-out", 
+  direction: "vertical" // or "horizontal"
+});
 ```
 
 ### Add Sections to Your HTML
 
 ```html
-<div class="section">Section 1</div>
-<div class="section">Section 2</div>
-<div class="section">Section 3</div>
+<div id="fullpage-container">
+  <div class="section">Section 1</div>
+  <div class="section">Section 2</div>
+  <div class="section">Section 3</div>
+</div>
 ```
 
 ### Navigate with Exposed Functions
@@ -53,6 +65,12 @@ fullPage.scrollPrev(); // Scroll to the previous section
 fullPage.scrollTo(2);  // Scroll to a specific section
 ```
 
+## Features
+- **Supports vertical and horizontal scrolling**
+- **Customizable animation duration and easing**
+- **Easily navigable via exposed functions**
+- **ES6 compliant**
+
 ## License
 
 MIT License
@@ -60,7 +78,7 @@ MIT License
 ```
 MIT License
 
-Copyright (c) 2025 Ankit Arora
+Copyright (c) 2025 [Your Name]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
