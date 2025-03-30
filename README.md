@@ -5,7 +5,7 @@ A simple full-page scrolling plugin in vanilla JavaScript.
 ## Installation
 
 ```sh
-npm install npm i jsfullpage_scroll
+npm install jsfullpage_scroll
 ```
 
 ## Usage
