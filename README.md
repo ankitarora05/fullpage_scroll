@@ -10,9 +10,22 @@ A simple full-page scrolling plugin in vanilla JavaScript that supports both **v
 npm install jsfullpage_scroll
 ```
 
+## Usage
+
+```javascript
+import FullPageScroll, { installFullPageScroll } from "jsfullpage_scroll";
+
+const fullPage = installFullPageScroll({ 
+  container: "#fullpage-container",
+  animationDuration: 1000, 
+  easing: "ease-in-out", 
+  direction: "vertical" // or "horizontal"
+});
+```
+
 ### CDN
 
-You can use this package via a CDN:
+Or, you can use this package via a CDN:
 
 ```html
 <!-- Include the script -->
@@ -32,19 +45,6 @@ You can use this package via a CDN:
     document.getElementById("next").addEventListener("click", () => fullPage.scrollNext());
   });
 </script>
-```
-
-## Usage
-
-```javascript
-import FullPageScroll, { installFullPageScroll } from "jsfullpage_scroll";
-
-const fullPage = installFullPageScroll({ 
-  container: "#fullpage-container",
-  animationDuration: 1000, 
-  easing: "ease-in-out", 
-  direction: "vertical" // or "horizontal"
-});
 ```
 
 ### Add Sections to Your HTML
@@ -78,7 +78,7 @@ MIT License
 ```
 MIT License
 
-Copyright (c) 2025 [Your Name]
+Copyright (c) 2025 Ankit Arora
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
