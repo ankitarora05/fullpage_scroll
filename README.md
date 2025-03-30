@@ -4,6 +4,8 @@ A simple full-page scrolling plugin in vanilla JavaScript.
 
 ## Installation
 
+### With NPM
+
 ```sh
 npm install jsfullpage_scroll
 ```
@@ -14,6 +16,24 @@ npm install jsfullpage_scroll
 import FullPageScroll, { installFullPageScroll } from "jsfullpage_scroll";
 
 const fullPage = installFullPageScroll({ animationDuration: 1000, easing: "ease-in-out" });
+```
+
+### With CDN
+
+You can use this package via a CDN:
+
+```html
+<!-- Include the script -->
+<script src="https://cdn.jsdelivr.net/npm/jsfullpage_scroll@latest"></script>
+```
+
+## Usage 
+
+```javascript
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const fullPage = installFullPageScroll({ animationDuration: 1000, easing: "ease-in-out" });
+  });
 ```
 
 ### Add Sections to Your HTML
