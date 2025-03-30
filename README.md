@@ -10,7 +10,7 @@ A simple full-page scrolling plugin in vanilla JavaScript.
 npm install jsfullpage_scroll
 ```
 
-## Usage
+### Usage
 
 ```javascript
 import FullPageScroll, { installFullPageScroll } from "jsfullpage_scroll";
@@ -27,13 +27,14 @@ You can use this package via a CDN:
 <script src="https://cdn.jsdelivr.net/npm/jsfullpage_scroll@latest"></script>
 ```
 
-## Usage 
+### Usage 
 
 ```javascript
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const fullPage = installFullPageScroll({ animationDuration: 1000, easing: "ease-in-out" });
   });
+</script>
 ```
 
 ### Add Sections to Your HTML
