@@ -1,5 +1,5 @@
 {
-	"name": "fullpage_scroll",
+	"name": "jsfullpage_scroll",
 	"version": "1.0.0",
 	"description": "A simple full-page scrolling plugin for JavaScript",
 	"main": "src/index.js",
@@ -12,8 +12,8 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ankitarora05/fullpage_scroll.git"
+		"url": "git+https://github.com/ankitarora05/fullpage_scroll.git"
 	},
-	"author": "Your Name",
+	"author": "Ankit Arora",
 	"license": "MIT"
 }
