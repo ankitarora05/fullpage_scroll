@@ -5,13 +5,13 @@ A simple full-page scrolling plugin in vanilla JavaScript.
 ## Installation
 
 ```sh
-npm install full-page-scroll
+npm install npm i jsfullpage_scroll
 ```
 
 ## Usage
 
 ```javascript
-import FullPageScroll, { installFullPageScroll } from "full-page-scroll";
+import FullPageScroll, { installFullPageScroll } from "jsfullpage_scroll";
 
 const fullPage = installFullPageScroll({ animationDuration: 1000, easing: "ease-in-out" });
 ```
